@@ -98,7 +98,7 @@ class TwitterHookService(service.Service):
         else:
             if id in self.hook_mapping:
                 del self.hook_mapping[id]
-        self.stream.setURL('http://stream.twitter.com/follow.json?follow=%s' % ','.join(self.hook_mapping.keys()))
+        self.stream.setURL('http://stream.twitter.com/follow.json?follow=%s' % str(','.join(self.hook_mapping.keys())))
         self.stream.connector.disconnect()
 
 def if_fail(reason):
