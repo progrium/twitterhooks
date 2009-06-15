@@ -3,13 +3,18 @@
 
 import wsgiref.handlers
 import oauth
-
+import os
 from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.api import urlfetch
 
 from django.utils import simplejson as json
+
+if 'Development' in os.environ['SERVER_SOFTWARE']:
+    TRANSFORMER_HOST = 'localhost:9333'
+else:
+    TRANSFORMER_HOST = 'transformer.twitterhooks.com'
 
 class MainHandler(webapp.RequestHandler):
     """Demo Twitter App."""
@@ -92,7 +97,7 @@ class AccountHandler(webapp.RequestHandler):
             url = account.hook_url
         else:
             url = None
-        urlfetch.fetch('http://localhost:9333/', payload=json.dumps([str(account.user_id), url]), method='POST')
+        urlfetch.fetch('http://%s/' % TRANSFORMER_HOST, payload=json.dumps([str(account.user_id), url]), method='POST')
 
 class Account(db.Model):
     user_id = db.IntegerProperty(required=True)

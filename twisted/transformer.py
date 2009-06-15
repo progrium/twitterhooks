@@ -64,7 +64,7 @@ class UpdateEndpoint(resource.Resource):
     
     def render_POST(self, request):
         mapping = json.loads(request.content.getvalue())
-        self.service.updateHookMapping(*mapping)
+        self.service.updateHookMapping(str(mapping[0]), str(mapping[1]))
         return "OK"
 
 
