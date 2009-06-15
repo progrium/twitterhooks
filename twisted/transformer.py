@@ -120,7 +120,7 @@ def post_tweet(tweet, url):
 
 print "Enter password for %s:" % USERNAME
 passwd = getpass.getpass()
-s = TwitterHookService(USERNAME, passwd, json.loads(urllib.urlopen('http://localhost:8084/data').read()))
+s = TwitterHookService(USERNAME, passwd, json.loads(urllib.urlopen('http://www.twitterhooks.com/data').read()))
 application = service.Application('twitterhooks')
 serviceCollection = service.IServiceCollection(application)
 internet.TCPServer(9333, s.getUpdateEndpointFactory()).setServiceParent(serviceCollection)
