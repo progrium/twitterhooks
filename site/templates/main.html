@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+  <p>Twitter Hooks lets you get pinged in near real-time at a URL you specify on events related to your Twitter account.</p>
+  <p>Supported events will include: your updates, your friends' updates, direct messages, and new followers.<br /> 
+    <em>However, your updates are the only available event right now.</em></p> 
+  <p>This is a limited beta since Twitter API limitations only allow us to currently follow 200 users.</p>
+  <p><a href="/oauth/twitter/login">Login via Twitter</a></p>
+  <p>{{message}}</p>
+{% endblock %}

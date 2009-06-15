@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  {{info.screen_name}} <a href="/oauth/twitter/logout">Logout</a><br /><br />
+  <form method="post">
+  <table><tr><td>Webhook URL:</td><td><input type="text" name="url" value="{{account.hook_url}}"/></td></tr>
+    <tr><td></td><td><input type="checkbox" name="update_event" {% if account.update_event %}checked="checked"{% endif %} /> Your updates</td></tr>
+    <tr><td></td><td style="color: gray;"><input type="checkbox" disabled="disabled" /> Friend updates</td></tr>
+    <tr><td></td><td style="color: gray;"><input type="checkbox" disabled="disabled" /> Direct messages</td></tr>
+    <tr><td></td><td style="color: gray;"><input type="checkbox" disabled="disabled" /> New followers</td></tr>
+    <tr><td></td><td><input type="submit" value="Save" /> {{message}}</td></tr>
+    </table>
+  </form>
+{% endblock %}
